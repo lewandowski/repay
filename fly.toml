@@ -1,0 +1,23 @@
+# fly.toml app configuration file generated for repay on 2023-10-21T17:19:45+02:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = "repay"
+primary_region = "ams"
+
+[build]
+
+[build.args]
+  PAYLOAD_PUBLIC_SERVER_URL = "https://repay.fly.dev"
+  
+[http_service]
+  internal_port = 3000
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ["app"]
+
+[env]
+  NODE_ENV = "production"
